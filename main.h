@@ -4,7 +4,6 @@
  * @param parent optional parent grammar for this one (NULL, usually).
  * @return new JSGF grammar object, or NULL on failure.
  */
-SPHINXBASE_EXPORT
 jsgf_t *jsgf_grammar_new(jsgf_t *parent);
 
 
@@ -15,7 +14,6 @@ jsgf_t *jsgf_grammar_new(jsgf_t *parent);
  * @param parent optional parent grammar for this one (NULL, usually).
  * @return new JSGF grammar object, or NULL on failure.
  */
-SPHINXBASE_EXPORT
 jsgf_t *jsgf_parse_file(const char *filename, jsgf_t *parent);
 
 
@@ -25,7 +23,6 @@ jsgf_t *jsgf_parse_file(const char *filename, jsgf_t *parent);
 * @param jsgf_string the jsgf string to parse 
 * @return new JSGF grammar object, or NULL on failure.
 */
-SPHINXBASE_EXPORT
 jsgf_t *jsgf_parse_string(const char *jsgf_string, jsgf_t *parent);
 
 
@@ -36,11 +33,9 @@ jsgf_t *jsgf_parse_string(const char *jsgf_string, jsgf_t *parent);
 * @param parent optional parent grammar for this one (NULL, usually).
 * @return new JSGF grammar object, or NULL on failure.
 */
-SPHINXBASE_EXPORT
 jsgf_t *jsgf_load_vocab(jsgf_t *parent, const char *resource_dir, int fname);
 
 
-SPHINXBASE_EXPORT
 void jsgf_update_weight(jsgf_t *gram);
 
 
@@ -54,7 +49,6 @@ void jsgf_update_weight(jsgf_t *gram);
  */
 
 
-SPHINXBASE_EXPORT
 jsgf_slu_t *jsgf_deduce(jsgf_t *parent, const char *rule, const char *uttr, glist_t jsgf_tag_list);
 
 
@@ -67,32 +61,27 @@ jsgf_slu_t *jsgf_deduce(jsgf_t *parent, const char *rule, const char *uttr, glis
  */
 
 
-SPHINXBASE_EXPORT
 const char *jsgf_deduce_next(jsgf_slu_t *result);
 
 
-SPHINXBASE_EXPORT
 void jsgf_deduce_free(jsgf_slu_t *result);
 
 
 /**
  * Get the grammar name from the file.
  */
-SPHINXBASE_EXPORT
 char const *jsgf_grammar_name(jsgf_t *jsgf);
 
 
 /**
  * Free a JSGF grammar.
  */
-SPHINXBASE_EXPORT
 void jsgf_grammar_free(jsgf_t *jsgf);
 
 
 /**
  * Copy a JSGF grammar.
  */
-SPHINXBASE_EXPORT
 void copy_grammar(jsgf_t *grammar);
 
 
@@ -105,7 +94,6 @@ typedef hash_iter_t jsgf_rule_iter_t;
 /**
  * Get an iterator over all rules in a grammar.
  */
-SPHINXBASE_EXPORT
 jsgf_rule_iter_t *jsgf_rule_iter(jsgf_t *grammar);
 
 
@@ -130,35 +118,30 @@ jsgf_rule_iter_t *jsgf_rule_iter(jsgf_t *grammar);
 /**
  * Get a rule by name from a grammar.
  */
-SPHINXBASE_EXPORT
 jsgf_rule_t *jsgf_get_rule(jsgf_t *grammar, char const *name);
 
 
 /**
  * Attach ruleptr on atom
  */
-SPHINXBASE_EXPORT
 void jsgf_atom_attach_ruleptr(jsgf_t *grammar);
 
 
 /**
  * Get the rule name from a rule.
  */
-SPHINXBASE_EXPORT
 char const *jsgf_rule_name(jsgf_rule_t *rule);
 
 
 /**
  * Test if a rule is public or not.
  */
-SPHINXBASE_EXPORT
 int jsgf_rule_public(jsgf_rule_t *rule);
 
 
 /**
  * Build a Sphinx FSG object from a JSGF rule.
  */
-SPHINXBASE_EXPORT
 fsg_model_t *jsgf_build_fsg(jsgf_t *grammar, jsgf_rule_t *rule,
                             logmath_t *lmath, float32 lw);
 
@@ -171,7 +154,6 @@ fsg_model_t *jsgf_build_fsg(jsgf_t *grammar, jsgf_rule_t *rule,
  * being this is necessary in order to write it to a file - the FSG
  * code will be fixed soon.
  */
-SPHINXBASE_EXPORT
 fsg_model_t *jsgf_build_fsg_raw(jsgf_t *grammar, jsgf_rule_t *rule,
                                 logmath_t *lmath, float32 lw);
 
@@ -182,7 +164,6 @@ fsg_model_t *jsgf_build_fsg_raw(jsgf_t *grammar, jsgf_rule_t *rule,
  *
  * This function looks for a first public rule in jsgf and constructs JSGF from it.
  */
-SPHINXBASE_EXPORT
 fsg_model_t *jsgf_read_file(const char *file, logmath_t * lmath, float32 lw);
 
 
@@ -192,26 +173,22 @@ fsg_model_t *jsgf_read_file(const char *file, logmath_t * lmath, float32 lw);
  * This does a direct conversion without doing transitive closure on
  * null transitions and so forth.
  */
-SPHINXBASE_EXPORT
 int jsgf_write_fsg(jsgf_t *grammar, jsgf_rule_t *rule, FILE *outfh);
 
 
 /**
  * get tag from json
  */
-SPHINXBASE_EXPORT
 glist_t jsgf_get_tag_list(const char *json_tag);
 
 
 /**
  * free jsgf tag 
  */
-SPHINXBASE_EXPORT
 void jsgf_tag_free(jsgf_tag_t *jsgf_tag);
 
 
 /**
  * free jsgf tag json
  */
-SPHINXBASE_EXPORT
 void jsgf_tag_list_free(glist_t jsgf_tag_list);
